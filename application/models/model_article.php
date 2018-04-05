@@ -23,13 +23,20 @@
 						)
 				);
 		}
-
-		public function get_article(){
+	
+	public function get_article(){
 			$db = Database::connect();
-
-			$slq = $db->query('Select * From posts');
-
-			
+			$article = array();
+			$result = $db->query('SELECT * From posts');
+			$i=0;
+			while($row=$result->fetch()){
+				$article[$i]['id_post']=$row['id_post'];
+				$i++;
+			}
+			return $article;
 		}
+	
+	
+		
 	}
  ?>

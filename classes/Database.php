@@ -7,20 +7,18 @@ class Database
 	
 	public static function connect()
 	{
-		
+		$host = 'localhost';
+      $user = 'root';
+      $pass = '';
+      $dbname = 'test';
    		
    		try {
-   			$path = '/../config.php';
-   		$params = include($path);
-
-   		$dsn = 'mysql:host={$params[host]};dbname={$params[dbname]}';
-   			$db = new PDO($dsn, $params['user'],$params['password']);
+   			$db = new PDO('mysql:host=127.0.0.1;port=3309;dbname=test', $user, $pass);
+                        return $db;
    		} catch (Exception $e) {
    			$e->getMessage();
    		}
-   		
 
-   		return $db;
 	}
 }
  ?>

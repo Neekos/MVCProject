@@ -23,5 +23,13 @@
 						)
 				);
 		}
+
+		public function get_article(){
+			$db = Database::connect();
+
+			$slq = $db->query('Select * From posts');
+
+			
+		}
 	}
  ?>

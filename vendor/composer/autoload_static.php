@@ -86,12 +86,21 @@ class ComposerStaticInitf61bbd33f01323cc973c919891b0510d
         ),
     );
 
+    public static $classMap = array (
+        'IdiormMethodMissingException' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
+        'IdiormResultSet' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
+        'IdiormString' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
+        'IdiormStringException' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
+        'ORM' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitf61bbd33f01323cc973c919891b0510d::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitf61bbd33f01323cc973c919891b0510d::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitf61bbd33f01323cc973c919891b0510d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitf61bbd33f01323cc973c919891b0510d::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -28,7 +28,7 @@
 			die;
 	*/
 	public function get_article(){
-			$db = Database::connect();
+			$db = DB::connect();
 			$article = array();
 			$result = $db->query('SELECT * From posts');
 			$i=0;

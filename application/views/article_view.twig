@@ -1,0 +1,14 @@
+{% extends 'layouts/app.twig' %}
+{% block title %}article{% endblock %}
+{% block content %}	
+
+	{% if not article %}
+		<h1>Not found article !</h1>
+	{% else %}
+		{{ article.title }}
+	<ul>
+		<li> {{article.content}} </li>
+	</ul>	
+	{% endif %}
+	
+{% endblock %}

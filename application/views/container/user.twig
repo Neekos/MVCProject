@@ -1,0 +1,10 @@
+{% extends 'layouts/app.twig' %}
+{% block title %}user2{% endblock %}
+{% block content %}
+<ul>
+	{% for item in user %}
+		<li> <a href=""> {{ item.name }}, {{ item.email }} </a> </li>
+	{% endfor %}
+</ul>
+	
+{% endblock %}

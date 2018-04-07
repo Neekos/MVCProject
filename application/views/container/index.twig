@@ -1,0 +1,11 @@
+{% extends 'layouts/app.twig' %}
+{% block title %}topic{% endblock %}
+{% block content %}
+<ul>
+	{% for item in posts %}
+		<li> <a href="{{ path_for('topics.show', {id_post: item.id_post } ) }}"> {{ item.title }} </a> </li>
+	{% endfor %}
+</ul>
+	
+	
+{% endblock %}

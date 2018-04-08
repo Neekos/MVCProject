@@ -3,7 +3,7 @@
 {% block content %}
 <ul>
 	{% for item in user %}
-		<li> <a href=""> {{ item.name }}, {{ item.email }} </a> </li>
+		<li> <a href="{{ path_for('user.show', {id: item.id } ) }}"> {{ item.name }}, {{ item.email }} </a> </li>
 	{% endfor %}
 </ul>
 	

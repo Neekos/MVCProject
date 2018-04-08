@@ -14,6 +14,25 @@
 
 			return $this->c->view->render($respons , 'container/user.twig', compact('user'));
 		}
+
+		function show($request, $respons, $args)
+		{
+			$user = $this->c->db->prepare("SELECT * FROM user WHERE id = :id ");
+
+			$user->execute([
+					'id' => $args['id'],
+				]);
+
+
+			$user = $user->fetch(PDO::FETCH_OBJ);
+
+
+			if ($user === false) {
+				return $this->render404($respons);
+			}
+
+			return $this->c->view->render($respons , 'container/one_user.twig', compact('user'));
+		}
 	}
 
 

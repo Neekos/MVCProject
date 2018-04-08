@@ -2,17 +2,21 @@
 	
 	use App\controllers\Controller_Topics;
 	use App\controllers\Controller_User;
-
+	use App\controllers\Controller_Readerect;
 	use App\models\Model_User;
 	use App\Apl; 
 
-	$app->get('/uuu', Controller_User::class .':index');
+	$app->get('/store', Controller_Readerect::class . ':stor')->setName('store.stor');
+	$app->get('/store/{id}', Controller_Readerect::class . ':show')->setName('store.show');
+
+	$app->get('/uuu', Controller_User::class .':index')->setName('uuu');
+	$app->get('/uuu/{id}', Controller_User::class .':show')->setName('user.show');
 
 	$app->get('/', function ($request, $response) use($app) {
 
 		$posts = $this->db->query('SELECT * FROM posts')->fetchAll(PDO::FETCH_OBJ);
 
-		$user = new User;
+		$user = new Model_User;
 		$apl = new Apl;
 
 		return $this->view->render($response, 'layouts/app.twig');
@@ -76,7 +80,7 @@
 
 		$this->post('', function(){
 			echo 'Topic post';
-		});
+		})->setName('topics');
 
 
 	});

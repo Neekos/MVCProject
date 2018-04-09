@@ -3,7 +3,7 @@
 	//Шаблон
 	$app->get('/admin', function($request, $respons){
 			return $respons->withRedirect('admin/main/');
-			return $this->view->render($respons, 'layouts/app.twig');
+			return $this->view->render($respons, 'layouts/admin.twig');
 	});
 
 	//Главная

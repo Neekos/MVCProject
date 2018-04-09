@@ -2,6 +2,8 @@
 	
 	use App\controllers\Controller_Articles;
 	use App\controllers\Controller_Image;
+	use App\controllers\Controller_Signup;
+	use App\controllers\Controller_Signin;
 	use App\models\Model_Image;
 	use App\models\Model_Article;
 	

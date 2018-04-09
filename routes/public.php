@@ -16,7 +16,7 @@
 	//Регистрация
 	$app->group('/signup', function() {
 
-			$this->get('/', Controller_Signup::class .':viewSignup')->setName('signup');
+			$this->get('/', Controller_Signup::class .':actionRegister')->setName('signup');
 			$this->get('/confirm/', Controller_Signup::class .':getSignupConfirm');
 			$this->post('/', Controller_Signup::class .':redirectSignupConfirm')->setName('signup');
 	});

@@ -2,6 +2,7 @@
 
 	namespace App\controllers;
 
+	use App\models\Model_Signup; 
 	use PDO;
 
 	
@@ -23,14 +24,22 @@
 
 		function actionRegister($request, $respons)
 		{
+
+			$name = '';
+			$surName = '';
+			$middleName = '';
+			$password = '';
+
 			if (isset($_POST['submit'])) {
 				$name = $_POST['name'];
 				$surName = $_POST['surName'];
 				$middleName = $_POST['middleName'];
 				$password = $_POST['password'];
 
-				if (isset($name)) {
-					# code...
+				$errors = false;
+
+				if (Model_Signup::CheckName($name)) {
+					$errors[] = 'Ошибка';
 				}
 			}
 

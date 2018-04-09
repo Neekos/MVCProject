@@ -13,6 +13,12 @@
 			return $this->view->render($respons, 'layouts/app.twig');
 	});
 
+	//Регистрация
+	$app->group('/signup', function() {
+
+			$this->get('/', Controller_Signup::class .':view')->setName('signup');
+	});
+
 	//Главная
 	$app->group('/home', function(){
 			$this->get('/', function($request, $respons){

@@ -1,0 +1,12 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}Новость{% endblock %}
+
+	{% block content %}
+		<div class="contaner">
+			<h3>{{ article.title }}</h3>
+			<img src="test.jpg">
+			<p>{{ article.text }}</p>
+		</div>
+		
+	{% endblock %}

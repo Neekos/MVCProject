@@ -1,0 +1,21 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}Галерея{% endblock %}
+	
+	{% block content %}
+		<div class="container">
+			{% for item in images %}
+					<div class="col-sm-12 col-md-6 col-lg-4">
+			            <div class="content">
+			               <a href="#">
+			                    <img src="/images/horse.jpg" alt="" class="mypost">
+			                    <div class="text">
+			                          <h3 class="">{{ item.title }}</h3> 
+			                           <p class="">{{ item.img }}</p>
+			                    </div>  
+			               </a>
+			            </div>
+			        </div>
+			{% endfor %}
+		</div>
+	{% endblock %}

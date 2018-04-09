@@ -11,4 +11,4 @@
 			$this->get('/', function($request, $respons){
 				return $this->view->render($respons, 'admin/main/main.twig');
 			})->setName('home');
-	});,nsdfgsdlkgfsdjlfjsdljflsdjflsdjl
+	});

@@ -26,7 +26,7 @@ return $view;
 	
 	
 		$container['db'] = function() {
-			return new PDO('mysql:host=localhost;port=3309;dbname=test', 'root', '');
+			return new PDO('mysql:host=localhost;port=3306;dbname=test', 'root', '');
 		};
 
 
@@ -37,10 +37,15 @@ return $view;
 		    ]);
 
 		    // Instantiate and add Slim specific extension
-		    $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
+		    $basePath = rtrim(str_ireplace('/public/index.php', '', $container['request']->getUri()->getBasePath()), '/');
 		    $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
 
 		    return $view;
 		};
 
+		
 	require __DIR__.'/../routes/public.php';
+	require __DIR__.'/../routes/api.php';
+	require __DIR__.'/../routes/admin.php';
+
+	

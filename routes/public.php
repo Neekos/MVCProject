@@ -1,86 +1,75 @@
 <?php 
 	
-	use App\controllers\Controller_Topics;
-	use App\controllers\Controller_User;
-	use App\controllers\Controller_Readerect;
-	use App\models\Model_User;
-	use App\Apl; 
-
-	$app->get('/store', Controller_Readerect::class . ':stor')->setName('store.stor');
-	$app->get('/store/{id}', Controller_Readerect::class . ':show')->setName('store.show');
-
-	$app->get('/uuu', Controller_User::class .':index')->setName('uuu');
-	$app->get('/uuu/{id}', Controller_User::class .':show')->setName('user.show');
-
-	$app->get('/', function ($request, $response) use($app) {
-
-		$posts = $this->db->query('SELECT * FROM posts')->fetchAll(PDO::FETCH_OBJ);
-
-		$user = new Model_User;
-		$apl = new Apl;
-
-		return $this->view->render($response, 'layouts/app.twig');
+	use App\controllers\Controller_Articles;
+	use App\controllers\Controller_Image;
+	use App\controllers\Controller_Signup;
+	use App\controllers\Controller_Signin;
+	use App\models\Model_Image;
+	use App\models\Model_Article;
+	
+	//Шаблон
+	$app->get('/', function($request, $respons){
+			return $respons->withRedirect('/home/');
+			return $this->view->render($respons, 'layouts/app.twig');
 	});
 
-	$app->get('/article/{id_post}', function ($request, $response, $args) use($app) {
+	//Регистрация
+	$app->group('/signup', function() {
 
-		$article = $this->db->prepare('SELECT * FROM posts WHERE id_post = :id_post');
-		$article -> execute([
-				'id_post' => $args['id_post'],
-			]);
-		$article = $article->fetch(PDO::FETCH_OBJ);
-		return $this->view->render($response, 'article_view.twig',[
-				'article' => $article
-			]);
+			$this->get('/', Controller_Signup::class .':viewSignup')->setName('signup');
+			$this->get('/confirm/', Controller_Signup::class .':getSignupConfirm');
+			$this->post('/', Controller_Signup::class .':redirectSignupConfirm')->setName('signup');
 	});
 
-	$app->get('/home', function ($request, $response) {
-		return $this->view->render($response, 'home_view.twig');
-	})->setName('home');
+	//авторизация
+	$app->group('/signin', function() {
 
-	$app->get('/admin', function ($request, $response) {
-		return $this->view->render($response, 'admin_view.twig');
-	})->setName('admin');
-
-	$app->get('/contact', function($request, $response){
-		return $this->view->render($response, 'contact_view.twig');
+			$this->get('/', Controller_Signin::class .':viewSignin')->setName('signin');
 	});
 
-	$app->get('/contact/confirm', function($request, $response){
-		return $this->view->render($response, 'contact_confirm_view.twig');
+	//Главная
+	$app->group('/home', function(){
+			$this->get('/', function($request, $respons){
+				return $this->view->render($respons, 'public/home/home.twig');
+			})->setName('home');
 	});
 
-	$app->post('/contact', function($request, $response){
-		return $response->withRedirect('http://mvcproject:81/contact/confirm');
-	})->setName('contact');
+	//Новости
+	$app->group('/news', function() {
 
-	$app->get('/user[/{id}]', function ($request, $response, $args) {
-		$user = [
-			'id' => $args['id'],
-			'username'=>'alex',
-		];
+			$this->get('/', Controller_Articles::class .':getAll')->setName('news');
+			$this->get('/{id}', Controller_Articles::class .':getОne')->setName('article.getOne');
+			//$this->get('/', function($request, $respons){
+			//	return $this->view->render($respons, 'public/news/news.twig');
+			//})->setName('news');
+	});
 
-		return $this->view->render($response, 'user_view.twig',compact('user'));
+	//Галерея
+	$app->group('/galereya', function(){
 
-	})->setName('user.id');
+			$this->get('/', Controller_Image::class .':getAllImage')->setName('galereya');
+			//$this->get('/', function($request, $respons){
+			//	return $this->view->render($respons, 'public/galereya/galereya.twig');
+			//})->setName('galereya');
+	});
 
-	//$app->get('/topics' '\App\controllers\Controller_Topics:index');
-	//$app->get('/topics', Controller_Topics::class .':index');
-	//$app->get('/topics/{id}', Controller_Topics::class .':show');
+	//Прасы
+	$app->group('/price', function(){
+			$this->get('/', function($request, $respons){
+				return $this->view->render($respons, 'public/price/price.twig');
+			})->setName('price');
+	});
 
-	$app->group('/topics', function(){
+	//Акции
+	$app->group('/akcyi', function(){
+			$this->get('/', function($request, $respons){
+				return $this->view->render($respons, 'public/akcyi/akcyi.twig');
+			})->setName('akcyi');
+	});
 
-		$this->get('', Controller_Topics::class .':index');
-
-		$this->get('/{id_post}', Controller_Topics::class .':show')->setName('topics.show');
-
-		//$this->get('/{id}', function($request, $response, $args){
-		//	echo 'Topic'. $args['id'];
-		//});
-
-		$this->post('', function(){
-			echo 'Topic post';
-		})->setName('topics');
-
-
+	//О нас
+	$app->group('/us', function(){
+			$this->get('/', function($request, $respons){
+				return $this->view->render($respons, 'public/us/us.twig');
+			})->setName('us');
 	});

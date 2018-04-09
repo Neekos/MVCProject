@@ -8,8 +8,8 @@
 	class Controller_Signin extends Controller
 	{
 		
-		function view($request, $respons)
+		function viewSignin($request, $respons)
 		{
-			$this->c->view->render($respons, 'input/signin.twig');
+			$this->c->view->render($respons, '/public/input/signin.twig');
 		}
 	}

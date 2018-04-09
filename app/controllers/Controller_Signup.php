@@ -1,6 +1,6 @@
 <?php 
 
-	namespace App\contollers;
+	namespace App\controllers;
 
 	use PDO;
 
@@ -8,8 +8,8 @@
 	class Controller_Signup extends Controller
 	{
 		
-		function view($request, $respons)
+		function viewSignup($request, $respons)
 		{
-			$this->c->view->render($respons, 'input/signup.twig');
+			$this->c->view->render($respons, '/public/input/signup.twig');
 		}
 	}

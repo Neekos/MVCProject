@@ -16,7 +16,13 @@
 	//Регистрация
 	$app->group('/signup', function() {
 
-			$this->get('/', Controller_Signup::class .':view')->setName('signup');
+			$this->get('/', Controller_Signup::class .':viewSignup')->setName('signup');
+	});
+
+	//авторизация
+	$app->group('/signin', function() {
+
+			$this->get('/', Controller_Signin::class .':viewSignin')->setName('signin');
 	});
 
 	//Главная

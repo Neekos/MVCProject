@@ -4,6 +4,8 @@
 	use App\controllers\Controller_Image;
 	use App\controllers\Controller_Signup;
 	use App\controllers\Controller_Signin;
+	use App\middleware\idFilter.php;
+	use App\middleware\RedirectIFUnauthenticade.php;
 	use App\models\Model_Image;
 	use App\models\Model_Article;
 
@@ -20,6 +22,16 @@
 		$this->get('/login', AuthController::class . ':login');
 		$this->get('/register', RegisterController::class . ':register' );
 	})->add(new RedirectIFAuthenticade($container['router']));
+	-----------------------------------------------------------------------------
+	$app->(new ipFilter($container['db']));
+
+	$app->('', function(){
+		return "home";
+	});
+
+	$app->('/login', function(){
+		return "login";
+	});
 	*/
 	
 	//Шаблон

@@ -17,7 +17,17 @@
 
 		public function __invoke($request, $response, $next)
 		{
+
+			if (!$this->allowed($_SERVER['REMOTE_ADDR'])) {
+				return $response->withStatus(401)->write('Denied');
+			}
 			return $next($request , $response);
+		}
+
+		public function allowed($ip){
+			$ips = $this->db->query()->fetchall(PDO::FETCH_COLUMN, 0);
+
+			return !in_array($ip, $ips);
 		}
 
 	}

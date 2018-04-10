@@ -9,7 +9,7 @@
 		
 		protected $c;
 
-		public function __construct(ContainerInterface $c)
+		public function __construct($c)
 		{
 			$this->c = $c;
 		}

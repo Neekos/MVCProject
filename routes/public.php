@@ -6,7 +6,21 @@
 	use App\controllers\Controller_Signin;
 	use App\models\Model_Image;
 	use App\models\Model_Article;
+
+	//Пример как должна выгдлядеть регистрация авторизация
+	/*
+	$app->get('/top', TopicController::class . 'index');
+
+	$app->group('' function){
+		$this->get('/top/create', TopController::class . ':create');
+		$this->get('/top/{id}', TopcController::class . ':show' );
+	})->add(new RedirectIFUauthenticade($container['router']));
 	
+	$app->group('' function){
+		$this->get('/login', AuthController::class . ':login');
+		$this->get('/register', RegisterController::class . ':register' );
+	})->add(new RedirectIFAuthenticade($container['router']));
+	*/
 	//Шаблон
 	$app->get('/', function($request, $respons){
 			return $respons->withRedirect('/home/');

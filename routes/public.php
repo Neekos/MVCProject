@@ -14,13 +14,14 @@
 	$app->group('' function){
 		$this->get('/top/create', TopController::class . ':create');
 		$this->get('/top/{id}', TopcController::class . ':show' );
-	})->add(new RedirectIFUauthenticade($container['router']));
+	})->add(new RedirectIFUnauthenticade($container['router']));
 	
 	$app->group('' function){
 		$this->get('/login', AuthController::class . ':login');
 		$this->get('/register', RegisterController::class . ':register' );
 	})->add(new RedirectIFAuthenticade($container['router']));
 	*/
+	
 	//Шаблон
 	$app->get('/', function($request, $respons){
 			return $respons->withRedirect('/home/');

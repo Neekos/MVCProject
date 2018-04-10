@@ -1,6 +1,11 @@
 {% extends 'layouts/app.twig' %}
 
 {% block content %}
+
+	{% if errors == true %}
+			<p>У вас ошибка ! </p>
+	{% endif %}
+
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
@@ -15,7 +20,7 @@
 				</div>
 				<div class="form-group">
 					<label for="surname">Фамилия</label>
-					<input type="text" name="surname" id="surname" class="form-control">
+					<input type="text" name="surName" id="surname" class="form-control">
 				</div>
 				<div class="form-group">
 					<label for="middleName">Отчество</label>
@@ -30,8 +35,8 @@
 					<input type="password" name="password" id="password" class="form-control">
 				</div>
 				<div class="form-group">
-					<label for="confirmPassword">Подтвердить пароль</label>
-					<input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
+					<label for="passwordConfirm">Подтвердить пароль</label>
+					<input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control">
 				</div>
 				
 				<div class="form-group">

@@ -14,9 +14,36 @@
 			return false;
 		}
 
+		public static function CheckSurName($surName)
+		{
+			if (strlen($name) >= 2) {
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function CheckMiddleName($middleName)
+		{
+			if (strlen($name) >= 2) {
+				return true;
+			}
+
+			return false;
+		}
+
 		public static function CheckPassword($password)
 		{
 			if (strlen($password) >= 6) {
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function CheckPasswordConfirm($passwordConfirm)
+		{
+			if ($passwordConfirm == $password) {
 				return true;
 			}
 

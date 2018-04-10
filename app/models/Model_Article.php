@@ -1,13 +1,14 @@
 <?php 
 	
 	namespace App\models;
-
 	
-	class Model_Article
+	use PDO;
+
+	class Model_Article extends Model
 	{
 		
-		function __construct()
+		public static function showInfoArticle()
 		{
-			
+			 
 		}
 	}

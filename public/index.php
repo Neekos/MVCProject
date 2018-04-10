@@ -1,5 +1,4 @@
 <?php 
-session_start();
 
 //require 'kint.php';
 //require 'classes/DB.Class.php';

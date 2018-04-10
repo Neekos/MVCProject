@@ -3,7 +3,8 @@
         "phpmailer/phpmailer": "^6.0",
         "slim/slim-skeleton": "^3",
         "j4mie/idiorm": "*",
-        "slim/twig-view": "^2.3"
+        "slim/twig-view": "^2.3",
+        "illuminate/database":"^5.2"
     },
 
     "autoload":{

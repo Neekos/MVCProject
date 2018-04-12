@@ -5,7 +5,19 @@
 $app = new \Slim\App([
 	'settings' =>[
 		'displayErrorDetails' => true,
-	]
+	],
+
+	'db' => [
+		'driver' => 'mysql',
+		'host' => 'localhost',
+		'database' => 'test',
+		'port' => '3306',
+		'username' => 'root',
+		'password' => '',
+		'charset' => 'utf8',
+		'collation' => 'utf8_general_ci',
+		'prefix' => '',
+	],
 ]);
 /*
 $container = $app->getContainer();
@@ -24,7 +36,17 @@ return $view;
 
 	// Get container
 	$container = $app->getContainer();
+	/*
+	$capsule = new \Illuminate\Database\Capsule\Manager;
 
+		$capsule->addConnection($container['settings']['db']);
+
+		$capsule->setAsGlobal();
+
+		$capsule->bootEloquent();
+
+	*/
+	
 	
 	
 		$container['db'] = function() {

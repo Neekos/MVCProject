@@ -14,6 +14,7 @@ class Controller_Articles extends Controller
 	{
 
 		$articles = $this->c->db->query("SELECT * FROM article")->fetchall(PDO::FETCH_CLASS , Model_Article::class);
+
 		return $this->c->view->render($respons, 'public/news/news.twig', compact('articles'));		
 	}
 

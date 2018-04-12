@@ -4,8 +4,8 @@
 	use App\controllers\Controller_Image;
 	use App\controllers\Controller_Signup;
 	use App\controllers\Controller_Signin;
-	use App\middleware\idFilter.php;
-	use App\middleware\RedirectIFUnauthenticade.php;
+	use App\middleware\ipFilter;
+	use App\middleware\RedirectIFUnauthenticade;
 	use App\models\Model_Image;
 	use App\models\Model_Article;
 

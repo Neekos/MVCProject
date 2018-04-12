@@ -25,7 +25,7 @@
 		}
 
 		public function allowed($ip){
-			$ips = $this->db->query()->fetchall(PDO::FETCH_COLUMN, 0);
+			$ips = $this->db->query("SELECT ip FROM blocked")->fetchall(PDO::FETCH_COLUMN, 0);
 
 			return !in_array($ip, $ips);
 		}

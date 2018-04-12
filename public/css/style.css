@@ -157,8 +157,18 @@ footer{background-color:#fff;padding: 10px 0;}
 footer .copy-right{margin-top: 20px;}
 
 ul.bottom-social li{margin-right: 7px;display: inline-block;text-align: center;}
-ul.bottom-social li a{padding: 7px;display: block;width: 25px;height: 25px;border-radius: 50%;font-size: 19px;color: #ffffff;background: #FFDF00;}
-ul.bottom-social li a i{margin-top: 4px;}
+ul.bottom-social li a{    padding: 7px;
+    display: block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 25px;
+    color: #ffffff;
+    background: #000000;}
+ul.bottom-social li a i{
+  margin-top: 0px;
+  
+}
 ul.bottom-social li a:hover, ul.bottom-social li a:focus, ul.bottom-social li a:active{opacity: 0.7;}
 
 
@@ -349,4 +359,8 @@ a.button-2:hover{background-color: rgba(0, 0, 0, 0.9);}
 /* ---------------------------------------------------------------------------- */
 .maps iframe{
     pointer-events: none;
+}
+
+i.fa.fa-arrow-circle-right.strelka {
+    font-size: 60px;
 }

@@ -9,6 +9,6 @@
 		
 		public static function showInfoArticle()
 		{
-			 $this->model->db->query();
+			// $this->model->db->query();
 		}
 	}

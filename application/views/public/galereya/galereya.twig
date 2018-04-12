@@ -3,19 +3,49 @@
 {% block title %}Галерея{% endblock %}
 	
 	{% block section %}
-		<div class="container">
-			{% for item in images %}
-					<div class="col-sm-12 col-md-6 col-lg-4">
-			            <div class="content">
-			               <a href="#">
-			                    <img src="/images/horse.jpg" alt="" class="mypost">
-			                    <div class="text">
-			                          <h3 class="">{{ item.title }}</h3> 
-			                           <p class="">{{ item.img }}</p>
-			                    </div>  
-			               </a>
-			            </div>
-			        </div>
-			{% endfor %}
-		</div>
+		<section class="content-box box-4 box-style-3"><!--Start Box-->
+					<div class="zerogrid">
+						<div class="row">
+							<div class="col-1-2">
+								<div class="wrap-col item">
+									<h2 class="header">Галерея</h2>
+									
+								</div>
+							</div>
+							<div class="col-1-2">
+								<div class="wrap-col item">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="content-box box-3 box-style-1"><!--Start Box-->
+					<div class="zerogrid">
+						<div class="row">
+							<div class="row">
+								{% for item in images %}
+									<div class="col-1-4">
+										<div class="wrap-col">
+											<a class="example-image-link" href="/images/photo1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+												<div class="zoom-container">
+													<div class="zoom-caption">
+														<div class="caption-inner">
+															<div class="caption-inner1">
+																<i class="fa fa-eye"></i>
+															</div>
+														</div>
+													</div>
+													<img class="example-image" src="/images/photo1.jpg" alt=""/>
+												</div>
+											</a>
+										</div>
+									</div>
+								{% endfor %}
+
+							</div>
+						</div>
+					</div>
+				</section>
+			
 	{% endblock %}

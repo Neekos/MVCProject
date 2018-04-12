@@ -76,53 +76,18 @@
 			<div class="wrap-container">
 				<section class="content-box box-1 box-style-1"><!--Start Box-->
 					<div class="zerogrid">
-						<div class="row">
-							<div class="col-1-3">
-								<div class="wrap-col ">
-									<div class="item">
-										<div class="zoom-container">
-											<img src="/images/test.jpg" />
-										</div>
-										<div class="item-content">
-											<h3 class="item-header"><a href="#">BASIC FURNITURE</a></h3>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-1-3">
-								<div class="wrap-col item">
-									<div class="zoom-container">
-										<img src="/images/test.jpg" />
-									</div>
-									<div class="item-content">
-										<h3 class="item-header"><a href="#">BASIC FURNITURE</a></h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-1-3">
-								<div class="wrap-col item">
-									<div class="zoom-container">
-										<img src="/images/test.jpg" />
-									</div>
-									<div class="item-content">
-										<h3 class="item-header"><a href="#">BASIC FURNITURE</a></h3>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 						<div class="row">
 							<div class="col-1-2">
 								<div class="wrap-col item">
-									<h2 class="header"><a href="#">Top Apartments For Rent</a></h2>
-									<p>Beciegast nveriti vitaesasety kertya aset aplicabrde ertyasnemo eniptaiades uytrsas leyrtertas bytrasade vtreasa.</p>
-									<a href="#" class="button-1">More</a>
+									<h2 class="header"><a href="#">Добро пожаловать! мы рады вас видеть.</a></h2>
+									<p>Здесь предоставлена подробная информация нашего место положения, контакты и предоставляемые услуги.</p>
+									<a href="#" class="button-1">Узнать больше</a>
 								</div>
 							</div>
 							<div class="col-1-2">
 								<div class="wrap-col item">
-									<h2 class="header"><a href="#">Save Your Time With Us</a></h2>
-									<p>Beciegast nveriti vitaesasety kertya aset aplicabrde ertyasnemo eniptaiades uytrsas leyrtertas bytrasade vtreasa.</p>
-									<a href="#" class="button-1">More</a>
+									
 								</div>
 							</div>
 						</div>
@@ -131,7 +96,7 @@
 				<section class="content-box box-2 box-style-2 t-center"><!--Start Box-->
 					<div class="zerogrid">
 						<div class="row">
-							<a href="#" class="button-2">Ссылка</a>
+							<a href="#" class="button-2">Обучение</a>
 						</div>
 					</div>
 				</section>
@@ -304,24 +269,41 @@
 						</div>
 					</div>
 				</section>
+				<section class="content-box box-5 box-style-4"><!--Start Box-->
+					<div class="zerogrid">
+						<div class="row">
+							<h2 class="header t-center">Публикации</h2>
+							<div class="row">
+								{% for item in articles %}
+								<div class="col-1-4">
+									<div class="wrap-col">
+										
+											<h3><a href="{{ path_for('article.getOne', {id: item.id } ) }}">{{ item.title }}</a></h3><br><p>{{ item.discription }}</p>
+										
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</section>
 				<section class="content-box box-4 box-style-3"><!--Start Box-->
 					<div class="zerogrid">
 						<div class="row">
 							<div class="col-1-2">
 								<div class="wrap-col item">
-									<h2 class="header">Contacts</h2>
-									<p>JL.Kemacetan timur no.23. block.Q3<br>
-									Jakarta-Indonesia</p>
-									<p>+6221 888 888 90 <br>
-									+6221 888 88891</p>
-									<p>info@yourdomain.com</p>
+									<h2 class="header">Контакты</h2>
+									<p>15-й км автодороги Абакан-Саяногорск <br>
+									не доезжая с.Белый Яр</p>
+									<p>8 (3902) 31-31-40<br>
+									</p>
+									<p>ksk-abakan@mail.ru</p>
 								</div>
 							</div>
 							<div class="col-1-2">
 								<div class="wrap-col item">
-									<h2 class="header">Testimonials</h2>
-									<p>Beciegast nveriti vitaesasety kertya aset aplicabrde ertyasnemo eniptaiades uytrsas leyrtertas bytrasade vtreasa.</p>
-									<a href="#" class="button-1">More</a>
+									<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aaaa9edcc2c5b046a73977a1fd5285737de3edea2f213028c53f634e7bb3d34a7&amp;width=550&amp;height=270&amp;lang=ru_RU&amp;scroll=true">
+									</script>
 								</div>
 							</div>
 						</div>

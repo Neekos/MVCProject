@@ -59,6 +59,7 @@
 	$app->group('/home', function(){
 			$this->get('/', function($request, $respons){
 				return $this->view->render($respons, 'public/home/home.twig');
+				
 			})->setName('home');
 	});
 

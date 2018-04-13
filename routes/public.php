@@ -4,6 +4,7 @@
 	use App\controllers\Controller_Image;
 	use App\controllers\Controller_Signup;
 	use App\controllers\Controller_Signin;
+	use App\controllers\HomeController;
 	use App\middleware\ipFilter;
 	use App\middleware\RedirectIFUnauthenticade;
 	use App\models\Model_Image;
@@ -57,10 +58,11 @@
 
 	//Главная
 	$app->group('/home', function(){
-			$this->get('/', function($request, $response){
-				return $this->view->render($response, 'public/home/home.twig');
-				
-			})->setName('home');
+
+			$this->get('/', HomeController::class .':index')->setName('home');
+			//$this->get('/', function($request, $response){
+			//	return $this->view->render($response, 'public/home/home.twig');
+			//})->setName('home');
 	});
 
 	//Новости

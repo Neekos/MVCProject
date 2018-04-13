@@ -15,9 +15,9 @@ $app = new \Slim\App([
 		'username' => 'root',
 		'password' => '',
 		'charset' => 'utf8',
-		'collation' => 'utf8_general_ci',
+		'collation' => 'utf8_unicode_ci',
 		'prefix' => '',
-	],
+	]
 ]);
 /*
 $container = $app->getContainer();
@@ -36,20 +36,24 @@ return $view;
 
 	// Get container
 	$container = $app->getContainer();
-	/*
-	$capsule = new \Illuminate\Database\Capsule\Manager;
 
-		$capsule->addConnection($container['settings']['db']);
+	
 
-		$capsule->setAsGlobal();
+	//$capsule = new \Illuminate\Database\Capsule\Manager;
 
-		$capsule->bootEloquent();
+	//$capsule->addConnection($container['db']);
 
-	*/
+	//$capsule->setAsGlobal();
+
+	//$capsule->bootEloquent();
+	
+
+
 	
 	
 	
-		$container['db'] = function() {
+		$container['db'] = function($container){
+			//return $capsule;
 			return new PDO('mysql:host=localhost;port=3306;dbname=test', 'root', '');
 		};
 

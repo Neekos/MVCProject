@@ -6,20 +6,20 @@
 	class Controller_Readerect extends Controller
 	{
 		
-		function stor($request, $respons, $args)
+		function stor($request, $response, $args)
 		{	
 			//return $respons->withRedirect('http://mvcproject:81/public/show');
 
 			return $respons->withRedirect($this->c->router->pathFor('store.show', ['id' => 5] ));
 
-			return $this->c->view->render($respons, 'readerect/stor.twig');
+			return $this->c->view->render($response, 'readerect/stor.twig');
 		}
 
-		function show($request, $respons, $args)
+		function show($request, $response, $args)
 		{	
 
 			return "show show" . $args['id'];
-			return $this->c->view->render($respons, 'readerect/show.twig');	
+			return $this->c->view->render($response, 'readerect/show.twig');	
 		}
 	}
 ?>

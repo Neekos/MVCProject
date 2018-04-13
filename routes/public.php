@@ -35,9 +35,9 @@
 	*/
 	
 	//Шаблон
-	$app->get('/', function($request, $respons){
-			return $respons->withRedirect('/home/');
-			return $this->view->render($respons, 'layouts/app.twig');
+	$app->get('/', function($request, $response){
+			return $response->withRedirect('/home/');
+			return $this->view->render($response, 'layouts/app.twig');
 	});
 
 	//Регистрация
@@ -57,8 +57,8 @@
 
 	//Главная
 	$app->group('/home', function(){
-			$this->get('/', function($request, $respons){
-				return $this->view->render($respons, 'public/home/home.twig');
+			$this->get('/', function($request, $response){
+				return $this->view->render($response, 'public/home/home.twig');
 				
 			})->setName('home');
 	});
@@ -68,8 +68,8 @@
 
 			$this->get('/', Controller_Articles::class .':getAll')->setName('news');
 			$this->get('/{id}', Controller_Articles::class .':getОne')->setName('article.getOne');
-			//$this->get('/', function($request, $respons){
-			//	return $this->view->render($respons, 'public/news/news.twig');
+			//$this->get('/', function($request, $response){
+			//	return $this->view->render($response, 'public/news/news.twig');
 			//})->setName('news');
 	});
 
@@ -77,28 +77,28 @@
 	$app->group('/galereya', function(){
 
 			$this->get('/', Controller_Image::class .':getAllImage')->setName('galereya');
-			//$this->get('/', function($request, $respons){
-			//	return $this->view->render($respons, 'public/galereya/galereya.twig');
+			//$this->get('/', function($request, $response){
+			//	return $this->view->render($response, 'public/galereya/galereya.twig');
 			//})->setName('galereya');
 	});
 
 	//Прасы
 	$app->group('/price', function(){
-			$this->get('/', function($request, $respons){
-				return $this->view->render($respons, 'public/price/price.twig');
+			$this->get('/', function($request, $response){
+				return $this->view->render($response, 'public/price/price.twig');
 			})->setName('price');
 	});
 
 	//Акции
 	$app->group('/akcyi', function(){
-			$this->get('/', function($request, $respons){
-				return $this->view->render($respons, 'public/akcyi/akcyi.twig');
+			$this->get('/', function($request, $response){
+				return $this->view->render($response, 'public/akcyi/akcyi.twig');
 			})->setName('akcyi');
 	});
 
 	//О нас
 	$app->group('/us', function(){
-			$this->get('/', function($request, $respons){
-				return $this->view->render($respons, 'public/us/us.twig');
+			$this->get('/', function($request, $response){
+				return $this->view->render($response, 'public/us/us.twig');
 			})->setName('us');
 	});

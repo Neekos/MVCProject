@@ -8,13 +8,13 @@
  class Controller_Image extends Controller
  {
  	
- 	function getAllImage($request, $respons)
+ 	function getAllImage($request, $response)
  	{
  		$images = $this->c->db->query("SELECT * FROM image ")->fetchall(PDO::FETCH_CLASS, Model_Image::class);
-		return $this->c->view->render($respons, 'public/galereya/galereya.twig', compact('images'));
+		return $this->c->view->render($response, 'public/galereya/galereya.twig', compact('images'));
  	}
 
- 	function getOneImage($request, $respons, $args)
+ 	function getOneImage($request, $response, $args)
  	{
  		# code...
  	}

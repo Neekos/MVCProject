@@ -2,13 +2,11 @@
 	
 	namespace App\models;
 	
-	use PDO;
+	//use Illuminate\Database\Eloquent\Model;
 
-	class Model_Article extends Model
+	class Model_Article 
 	{
+		protected $table = 'article';
 		
-		public static function showInfoArticle()
-		{
-			// $this->model->db->query();
-		}
+		
 	}

@@ -2,13 +2,23 @@
 	
 	namespace App\models;
 
-	class Model_User
-	{
-		
-		function index()
-		{
-			
+	//use Illuminate\Database\Eloquent\Model;
 
-		}
+ 	use PDO;
+	class Model_User //extends Model
+	{
+
+		protected $table = 'user';
+
+
+		protected $fillable = [
+			'name',
+			'surname',
+			'middlename',
+			'email',
+			'password',
+		];
+		
+		
 	}
 ?>

@@ -14,9 +14,9 @@
 			$this->c = $c;
 		}
 
-		protected function render404($respons){
+		protected function render404($response){
 
-			return $this->c->view->render($respons->withStatus(404), 'errors/404.twig');
+			return $this->c->view->render($response->withStatus(404), 'errors/404.twig');
 		}
 	}
  ?>

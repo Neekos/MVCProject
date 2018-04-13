@@ -10,16 +10,17 @@ use PDO;
 class Controller_Articles extends Controller
 {
 	
-	function getAll($request, $respons)
+	function getAll($request, $response)
 	{
 
 		$articles = $this->c->db->query("SELECT * FROM article")->fetchall(PDO::FETCH_CLASS , Model_Article::class);
 
-		return $this->c->view->render($respons, 'public/news/news.twig', compact('articles'));	
+		
+		return $this->c->view->render($response, 'public/news/news.twig', compact('articles'));	
 
 	}
 
-	function getОne($request, $respons, $args)
+	function getОne($request, $response, $args)
 	{
 		$article = $this->c->db->prepare("SELECT * FROM article WHERE id = :id");
 
@@ -32,9 +33,9 @@ class Controller_Articles extends Controller
 
 
 			if ($article === false) {
-				return $this->render404($respons);
+				return $this->render404($response);
 			}
 
-		return $this->c->view->render($respons, 'public/news/show.twig', compact('article'));		
+		return $this->c->view->render($response, 'public/news/show.twig', compact('article'));		
 	}	
 }

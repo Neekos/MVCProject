@@ -2,13 +2,12 @@
 
 	namespace App\controllers;
 
-	use App\models\Model_Signup; 
-	use PDO;
+	use App\models\Model_User;
 
 	
 	class Controller_Signup extends Controller
 	{
-		function actionRegister($request, $respons)
+		function actionRegister($request, $response)
 		{
 
 			$name = '';
@@ -48,33 +47,52 @@
 						$errors[] = 'Ошибка в повторном пароле';
 					}
 
-				$this->postSignup($request, $respons);
+				$this->postSignup($request, $response);
 
 
 			}
 
-			$this->c->view->render($respons, '/public/input/signup.twig');
+			$this->c->view->render($response, '/public/input/signup.twig');
 		}
 
 		
-		function viewSignup($request, $respons)
+		function viewSignup($request, $response)
 		{
-			$this->c->view->render($respons, '/public/input/signup.twig');
+			$this->c->view->render($response, '/public/input/signup.twig');
 		}
-		function redirectSignupConfirm($request, $respons){
-			return $respons->withRedirect('/signup/confirm/');
+		function redirectSignupConfirm($request, $response){
+			return $response->withRedirect('/signup/confirm/');
 		}
 
-		function postSignup($request, $respons)
+		function postSignup($request, $response)
 		{
-			$this->redirectSignupConfirm($request, $respons);
-			return "Данные отправлены!";
+			$user = $this->c->db->prepare("INSERT INTO user (name , surname, middlename, email, password) VALUES (:name, :surname, :middlename, :email, :password)");
 
-			$this->c->view->render($respons, '/public/input/signup.twig');
+					$name = $_POST['name'];
+					$surname = $_POST['surname'];
+					$middlename = $_POST['middlename'];
+					$email = $_POST['email'];
+					$password = $_POST['password'];
+
+					$user->bindValue(':name', $name);
+					$user->bindValue(':surname', $surname);
+					$user->bindValue(':middlename', $middlename);
+					$user->bindValue(':email', $email);
+					$user->bindValue(':password', $password);
+
+					$user->execute();
+					//'name' => $request->getParam('name'),
+					//'surname' => $request->getParam('surname'),
+					//'middlename' => $request->getParam('middlename'),
+					//'email' => $request->getParam('email'),
+					//'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
+
+
+			return $response->withRedirect($this->c->router->pathFor('home'));
 		}
 
-		function getSignupConfirm($request, $respons){
-			$this->c->view->render($respons, '/public/input/signupConfirm.twig');
+		function getSignupConfirm($request, $response){
+			$this->c->view->render($response, '/public/input/signupConfirm.twig');
 		}
 
 		

@@ -6,13 +6,9 @@
 		<section class="content-box box-5 box-style-4"><!--Start Box-->
 					<div class="zerogrid">
 						<div class="row">
-							<h2 class="header t-center">Товары и услуги</h2>
+							<h2 class="header t-center">Запись</h2>
 							<div class="row">
-								<ul>
-									{% for item in price %}
-										<h3><a href="{{ path_for('price.showPriceOne', {id: item.id } ) }}">{{item.title}}</a></h3> <hr>
-									{% endfor %}
-								</ul>
+								<button class="btn btn-primary">записаться</button> 
 							</div>
 						</div>
 					</div>

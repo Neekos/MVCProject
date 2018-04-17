@@ -5,6 +5,7 @@
 	use App\controllers\Controller_Signup;
 	use App\controllers\Controller_Signin;
 	use App\controllers\HomeController;
+	use App\controllers\Controller_Price;
 	use App\middleware\ipFilter;
 	use App\middleware\RedirectIFUnauthenticade;
 	use App\models\Model_Image;
@@ -84,11 +85,15 @@
 			//})->setName('galereya');
 	});
 
-	//Прасы
+	//Прайсы
 	$app->group('/price', function(){
-			$this->get('/', function($request, $response){
-				return $this->view->render($response, 'public/price/price.twig');
-			})->setName('price');
+			$this->get('/', Controller_Price::class .':showPriceAll')->setName('price');
+			$this->get('/{id}', Controller_Price::class .':showPriceOne')->setName('price.showPriceOne');
+			$this->get('/zapis', Controller_Price::class .':zapis')->setName('price.zapis');
+
+			//$this->get('/', function($request, $response){
+			//	return $this->view->render($response, 'public/price/price.twig');
+			//})->setName('price');
 	});
 
 	//Акции

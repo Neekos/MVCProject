@@ -8,11 +8,7 @@
 						<div class="row">
 							<h2 class="header t-center">Товары и услуги</h2>
 							<div class="row">
-								<ul>
-									{% for item in price %}
-										<h3><a href="{{ path_for('price.showPriceOne', {id: item.id } ) }}">{{item.title}}</a></h3> <hr>
-									{% endfor %}
-								</ul>
+								<a href="{{ path_for('zapis') }}"><button class="btn btn-primary">записаться</button></a><button class="btn btn-success"></a>	Купить</button>  
 							</div>
 						</div>
 					</div>

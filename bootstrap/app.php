@@ -1,6 +1,6 @@
 <?php 
 
-	session_start();
+session_start();
 
 $app = new \Slim\App([
 	'settings' =>[
@@ -34,7 +34,7 @@ return $view;
 };
 */
 
-	// Get container
+	//Получаю контейнер
 	$container = $app->getContainer();
 
 	
@@ -51,29 +51,30 @@ return $view;
 
 	
 	
-	
+		//контейнер подключение базы данных
 		$container['db'] = function($container){
-			//return $capsule;
 			return new PDO('mysql:host=localhost;port=3306;dbname=test', 'root', '');
 		};
 
 
-		// Register component on container
+		//создаем контайнер отображения шаблонов
 		$container['view'] = function ($container) {
+			//задаем путь где будут лежать шаблоны
 		    $view = new \Slim\Views\Twig(__DIR__.'/../application/views', [
 		        'cache' => false
 		    ]);
-
-		    // Instantiate and add Slim specific extension
+		    //добавляем расширение twig
 		    $basePath = rtrim(str_ireplace('/public/index.php', '', $container['request']->getUri()->getBasePath()), '/');
 		    $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
 
 		    return $view;
 		};
 
-		
+	//подключение роутер отображения сайта	
 	require __DIR__.'/../routes/public.php';
+	//подключение роутер отвечающий за добавление, удаление и редактирования данных
 	require __DIR__.'/../routes/api.php';
+	//подключение роутера отображения административной панели
 	require __DIR__.'/../routes/admin.php';
 
 	

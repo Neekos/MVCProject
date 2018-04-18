@@ -8,7 +8,14 @@
 						<div class="row">
 							<h2 class="header t-center">Товары и услуги</h2>
 							<div class="row">
-								<a href="{{ path_for('zapis') }}"><button class="btn btn-primary">записаться</button></a><button class="btn btn-success"></a>	Купить</button>  
+								Название: {{ prices.title }}<br>
+								Стоимость в выходные: {{ prices.price }}<br>
+								Продолжительность: {{ prices.time }}<br>
+								Кол-во занятий: {{ prices.number }}<br>
+
+								<br>
+								<a href="{{ path_for('zapis') }}"><button class="btn btn-primary">записаться</button></a><button class="btn btn-success"></a>Купить</button>  
+								
 							</div>
 						</div>
 					</div>

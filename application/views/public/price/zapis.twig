@@ -8,7 +8,44 @@
 						<div class="row">
 							<h2 class="header t-center">Запись</h2>
 							<div class="row">
-								<button class="btn btn-primary">записаться</button> 
+								<div class="col-md-8 col-md-offset-2">
+									<div class="panel panel-default">
+								<div class="panel-heading">
+								
+								</div>
+								<div class="panel-body">
+									<form action="{{ path_for('zapis')}}" method="post">
+										<div class="form-group">
+											<label for="surname">Фамилия</label>
+											<input type="text" name="surname" id="surname" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="name">Имя</label>
+											<input type="text" name="name" id="name" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="middlename">Отчество</label>
+											<input type="text" name="middlename" id="middlename" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="Email">Email</label>
+											<input type="text" name="name" id="Email" class="form-control">
+										</div>
+										<div class="form-group">
+											<label for="telephon">Телефон</label>
+											<input type="text" name="telephon" id="telephon" class="form-control">
+										</div>
+										<select>
+											<option>{{ prices.title }}</option>
+										</select>
+										
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary">Записаться</button>
+										</div>
+									</form>
+								</div>
+							</div>
+								</div>
 							</div>
 						</div>
 					</div>

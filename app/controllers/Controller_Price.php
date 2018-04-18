@@ -16,14 +16,14 @@
 
 		function showPriceOne($request, $response , $args)
 		{
-			$price = $this->c->db->prepare("SELECT * FROM servers, date_of_the_week, time_of_lesson, number_of_lesson, price where id=:id");
-			$price->execute([
+			$prices = $this->c->db->prepare("SELECT * FROM servers, day_of_the_week, time_of_lessons, number_of_lessons, price where servers.id=:id");
+			$prices->execute([
 				'id'=>$args['id'],
 				]);
 
-			$price = $price->fetch(PDO::FETCH_OBJ);
+			$prices = $prices->fetch(PDO::FETCH_OBJ);
 
-			return $this->c->view->render($response , 'public/price/OnePrice.twig' , compact('price'));
+			return $this->c->view->render($response , 'public/price/OnePrice.twig' , compact('prices'));
 		}
 
 		function zapis($request, $response)

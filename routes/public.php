@@ -1,5 +1,6 @@
 <?php 
 	
+	//Подключаю Контроллеры Модули и необходимое
 	use App\controllers\Controller_Articles;
 	use App\controllers\Controller_Image;
 	use App\controllers\Controller_Signup;
@@ -38,66 +39,65 @@
 	
 	//Шаблон
 	$app->get('/', function($request, $response){
+			//Ридеректим на главную
 			return $response->withRedirect('/home/');
+			//отображаем шаблон header and footer
 			return $this->view->render($response, 'layouts/app.twig');
 	});
 
 	//Регистрация
 	$app->group('/signup', function() {
-
+			//Отображение формы регистрации
 			$this->get('/', Controller_Signup::class .':actionRegister')->setName('signup');
+			//передача данных методом post
 			$this->post('/', Controller_Signup::class .':postSignup')->setName('signup');
+			//Отображение подтверждения
 			$this->get('/confirm/', Controller_Signup::class .':getSignupConfirm');
-			//$this->post('/', Controller_Signup::class .':redirectSignupConfirm')->setName('signup');
 	});
 
 	//авторизация
 	$app->group('/signin', function() {
-
+			//отображение формы авторизации
 			$this->get('/', Controller_Signin::class .':viewSignin')->setName('signin');
+			//передача данных методом post
+			$this->post('/', Controller_Signin::class .':postSignin')->setName('signin');
 	});
 
 	//Главная
 	$app->group('/home', function(){
-
+			//Отображение элементов главной страницы
 			$this->get('/', HomeController::class .':index')->setName('home');
-			//$this->get('/', function($request, $response){
-			//	return $this->view->render($response, 'public/home/home.twig');
-			//})->setName('home');
 	});
 
 	//Новости
 	$app->group('/news', function() {
-
+			//Отображение всех новостей
 			$this->get('/', Controller_Articles::class .':getAll')->setName('news');
+			//Отображение одной новости
 			$this->get('/{id}', Controller_Articles::class .':getОne')->setName('article.getOne');
-			//$this->get('/', function($request, $response){
-			//	return $this->view->render($response, 'public/news/news.twig');
-			//})->setName('news');
 	});
 
 	//Галерея
 	$app->group('/galereya', function(){
-
+			//отображение фотогалереи
 			$this->get('/', Controller_Image::class .':getAllImage')->setName('galereya');
-			//$this->get('/', function($request, $response){
-			//	return $this->view->render($response, 'public/galereya/galereya.twig');
-			//})->setName('galereya');
 	});
 
 	//Прайсы
 	$app->group('/price', function(){
+			//отображение всех услуг
 			$this->get('/', Controller_Price::class .':showPriceAll')->setName('price');
-			$this->get('/{id}', Controller_Price::class .':showPriceOne')->setName('price.showPriceOne');
-			$this->get('/zapis', Controller_Price::class .':zapis')->setName('price.zapis');
-
-			//$this->get('/', function($request, $response){
-			//	return $this->view->render($response, 'public/price/price.twig');
-			//})->setName('price');
+			//отображение одной услуги
+			$this->get('/{id}/', Controller_Price::class .':showPriceOne')->setName('price.showPriceOne');
+			//отображение формы записи на услугу
+			$this->get('/zapis', Controller_Price::class .':zapis')->setName('zapis');
+			//передача данных о записи методом post
+			$this->post('/zapis', Controller_Price::class .':zapis')->setName('zapis');
 	});
 
 	//Акции
 	$app->group('/akcyi', function(){
+			//отображение имеющихся акциий
 			$this->get('/', function($request, $response){
 				return $this->view->render($response, 'public/akcyi/akcyi.twig');
 			})->setName('akcyi');
@@ -105,6 +105,7 @@
 
 	//О нас
 	$app->group('/us', function(){
+			//отображение информации о организации
 			$this->get('/', function($request, $response){
 				return $this->view->render($response, 'public/us/us.twig');
 			})->setName('us');

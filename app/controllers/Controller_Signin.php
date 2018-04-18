@@ -12,4 +12,9 @@
 		{
 			$this->c->view->render($response, '/public/input/signin.twig');
 		}
+
+		function postSignin($request, $response)
+		{
+			return $response->withRedirect($this->c->router->pathFor('home'));
+		}
 	}

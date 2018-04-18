@@ -68,27 +68,19 @@
 		{
 			$user = $this->c->db->prepare("INSERT INTO user (name , surname, middlename, email, password) VALUES (:name, :surname, :middlename, :email, :password)");
 
-					$name = $_POST['name'];
-					$surname = $_POST['surname'];
-					$middlename = $_POST['middlename'];
-					$email = $_POST['email'];
-					$password = $_POST['password'];
+				$params = $request->getParams();
 
-					$user->bindValue(':name', $name);
-					$user->bindValue(':surname', $surname);
-					$user->bindValue(':middlename', $middlename);
-					$user->bindValue(':email', $email);
-					$user->bindValue(':password', $password);
+				$user->bindValue(':name', $params['name']);
+				$user->bindValue(':surname', $params['surname']);
+				$user->bindValue(':middlename', $params['middlename']);
+				$user->bindValue(':email', $params['email']);
+				$user->bindValue(':password', $params['password']);
 
-					$user->execute();
-					//'name' => $request->getParam('name'),
-					//'surname' => $request->getParam('surname'),
-					//'middlename' => $request->getParam('middlename'),
-					//'email' => $request->getParam('email'),
-					//'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
-
-
-			return $response->withRedirect($this->c->router->pathFor('home'));
+				$user->execute();
+				d($params);
+				die();
+					
+			//return $response->withRedirect($this->c->router->pathFor('home'));
 		}
 
 		function getSignupConfirm($request, $response){

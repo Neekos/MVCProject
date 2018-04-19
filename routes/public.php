@@ -52,7 +52,7 @@
 			//передача данных методом post
 			$this->post('/', Controller_Signup::class .':postSignup')->setName('signup');
 			//Отображение подтверждения
-			$this->get('/confirm/', Controller_Signup::class .':getSignupConfirm');
+			$this->get('/confirm/', Controller_Signup::class .':getSignupConfirm')->setName('confirm');
 	});
 
 	//авторизация

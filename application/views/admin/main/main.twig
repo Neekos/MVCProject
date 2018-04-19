@@ -10,7 +10,41 @@
                     Заказы
                 </div>
                 <div class="panel-body">
-                    Тут список <button class="btn btn-primary" >Редактировать</button><button class="btn btn-danger" >удалить</button>
+                    <div class="col-lg-12"> 
+                    <div class="table-responsive"> 
+                    <table class="table table-bordered table-hover table-striped"> 
+                    <thead> 
+                    <tr> 
+                    <th>№</th> 
+                    <th>Фамилия</th> 
+                    <th>Имя</th> 
+                    <th>Отчество</th> 
+                    <th>Телефон</th> 
+                    <th>email</th> 
+                    <th>Статус</th> 
+                    <th></th>  
+                    <th></th>
+                    </tr> 
+                    </thead> 
+                    <tbody> 
+                    <?php foreach ($newsList as $newsItem): ?> 
+                    <tr> 
+                    <td><?php echo $newsItem['id']; ?></td> 
+                    <td><?php echo $newsItem['title']; ?></td> 
+                    <td><?php echo $newsItem['category_id']; ?></td> 
+                    <td><?php echo $newsItem['description']; ?></td> 
+                    <td><?php echo $newsItem['users']; ?></td> 
+                    <td><?php echo $newsItem['date']; ?></td> 
+                    <td><?php echo $newsItem['status']; ?></td> 
+                    <td> <a href=""><button class="btn btn-primary" >Написать </button></a></td>
+                    <td> <a href=""><button class="btn btn-primary" >Поддтвердить </button></a></td> 
+                    </tr> 
+                    <?php endforeach; ?> 
+
+                    </tbody> 
+                    </table> 
+                    </div> 
+                    </div> 
                 </div>
             </div>
 		</div>
@@ -21,7 +55,38 @@
                     пользователи
                 </div>
                 <div class="panel-body">
-                    Тут пользователи  
+                    <div class="col-lg-12"> 
+                    <div class="table-responsive"> 
+                    <table class="table table-bordered table-hover table-striped"> 
+                    <thead> 
+                    <tr> 
+                    <th>№</th> 
+                    <th>Фамилия</th> 
+                    <th>Имя</th> 
+                    <th>Отчество</th> 
+                    <th>Телефон</th> 
+                    <th>email</th>  
+                    <th></th>  
+                    </tr> 
+                    </thead> 
+                    <tbody> 
+                    {% for item in user %} 
+                    <tr> 
+                    <td>{{ item.id }}</td>    
+                    <td>{{ item.surname }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.middlename }}</td>
+                    <td>{{ item.telephon }}</td>
+                    <td>{{ item.email }}</td> 
+                     
+                    <td> <a href=""><button class="btn btn-primary" >Написать </button></a></td> 
+                    </tr> 
+                    {% endfor %}
+
+                    </tbody> 
+                    </table> 
+                    </div> 
+                    </div> 
                 </div>
             </div>
 		</div>

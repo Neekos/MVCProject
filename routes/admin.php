@@ -8,14 +8,16 @@
 
 	//Главная админки
 	$app->group('/admin/main', function(){
-			$this->get('/', function($request, $respons){
-				return $this->view->render($respons, 'admin/main/main.twig');
+			$this->get('/', function($request, $respons, $args){
+				$user = $this->db->query("SELECT * FROM user")->fetchall(PDO::FETCH_OBJ);
+				return $this->view->render($respons, 'admin/main/main.twig', compact('user'));
 			})->setName('main');
 	});
 	//Новости админки
 	$app->group('/admin/news', function(){
 			$this->get('/', function($request, $respons){
-				return $this->view->render($respons, 'admin/news/news.twig');
+				$article = $this->db->query("SELECT * FROM article")->fetchall(PDO::FETCH_OBJ);
+				return $this->view->render($respons, 'admin/news/news.twig', compact('article'));
 			})->setName('admin.news');
 	});
 	//галерея админки

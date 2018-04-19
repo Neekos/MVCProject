@@ -1,5 +1,5 @@
 	{% extends 'layouts/app.twig' %}
-
+	
 	{% block section %}
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
@@ -8,7 +8,9 @@
 						Регистрация завершена!
 					</div>
 					<div class="panel-body">
-						Добро пожаловать в 
+						Добро пожаловать {% set logger = app.session.get('logger') %}
+						{% set log = logger['name'] %}
+						{{log.name}}
 						
 					</div>
 				</div>

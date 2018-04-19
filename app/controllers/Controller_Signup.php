@@ -4,7 +4,7 @@
 
 	use App\models\Model_User;
 
-	
+	use PDO;
 	class Controller_Signup extends Controller
 	{
 		function actionRegister($request, $response)
@@ -66,25 +66,34 @@
 
 		function postSignup($request, $response)
 		{
-			$user = $this->c->db->prepare("INSERT INTO user (name , surname, middlename, email, password) VALUES (:name, :surname, :middlename, :email, :password)");
+			$user = $this->c->db->prepare("INSERT INTO user (name , surname , middlename , email , telephon , password) VALUES (:name , :surname , :middlename , :email , :telephon , :password)");
 
 				$params = $request->getParams();
 
-				$user->bindValue(':name', $params['name']);
-				$user->bindValue(':surname', $params['surname']);
-				$user->bindValue(':middlename', $params['middlename']);
-				$user->bindValue(':email', $params['email']);
-				$user->bindValue(':password', $params['password']);
+				//$user->bindParam(':name', $params['name'], PDO::PARAM_STR, 255);
+				//$user->bindValue(':surname', "%{$params['surname']}%");
+				//$user->bindValue(':middlename', $params['middlename']);
+				//$user->bindValue(':email', $params['email']);
+				//$user->bindValue(':password', $params['password']);
 
-				$user->execute();
-				d($params);
-				die();
+				$user->execute([
+					':name' => $params['name'],
+					':surname' =>$params['surname'],
+					':middlename' =>$params['middlename'],
+					':email' =>$params['email'],
+					':telephon' =>$params['telephon'],
+					':password' =>md5($params['password'])
+					]);
+
+				
 					
-			//return $response->withRedirect($this->c->router->pathFor('home'));
+			return $response->withRedirect($this->c->router->pathFor('confirm'));
 		}
 
 		function getSignupConfirm($request, $response){
+			
 			$this->c->view->render($response, '/public/input/signupConfirm.twig');
+			
 		}
 
 		

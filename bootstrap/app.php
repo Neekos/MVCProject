@@ -56,6 +56,10 @@ return $view;
 			return new PDO('mysql:host=localhost;port=3306;dbname=test', 'root', '');
 		};
 
+		$container['validator'] = function($container){
+			return new App\validation\Validator;
+			
+		};
 
 		//создаем контайнер отображения шаблонов
 		$container['view'] = function ($container) {

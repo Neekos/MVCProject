@@ -48,9 +48,9 @@
 	//Регистрация
 	$app->group('/signup', function() {
 			//Отображение формы регистрации
-			$this->get('/', Controller_Signup::class .':actionRegister')->setName('signup');
+			$this->get('/', Controller_Signup::class .':viewsignup')->setName('signup');
 			//передача данных методом post
-			$this->post('/', Controller_Signup::class .':postSignup')->setName('signup');
+			$this->post('/', Controller_Signup::class .':postSignup')->setName('signuppost');
 			//Отображение подтверждения
 			$this->get('/confirm/', Controller_Signup::class .':getSignupConfirm')->setName('confirm');
 	});

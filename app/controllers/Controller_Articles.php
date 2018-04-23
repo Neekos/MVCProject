@@ -13,8 +13,9 @@ class Controller_Articles extends Controller
 	function getAll($request, $response)
 	{
 
-		$articles = $this->c->db->query("SELECT * FROM article")->fetchall(PDO::FETCH_CLASS , Model_Article::class);
+		$articles = $this->c->db->query("SELECT * FROM article")->fetchall(PDO::FETCH_CLASS, Model_Article::class);
 
+		d($articles);
 		
 		return $this->c->view->render($response, 'public/news/news.twig', compact('articles'));	
 

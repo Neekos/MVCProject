@@ -11,4 +11,5 @@ return array(
     'IdiormString' => $vendorDir . '/j4mie/idiorm/idiorm.php',
     'IdiormStringException' => $vendorDir . '/j4mie/idiorm/idiorm.php',
     'ORM' => $vendorDir . '/j4mie/idiorm/idiorm.php',
+    'PclZip' => $vendorDir . '/pclzip/pclzip/pclzip.lib.php',
 );

@@ -14,6 +14,11 @@ class ComposerStaticInitf61bbd33f01323cc973c919891b0510d
     );
 
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'Zend\\Stdlib\\' => 12,
+            'Zend\\Escaper\\' => 13,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -25,11 +30,17 @@ class ComposerStaticInitf61bbd33f01323cc973c919891b0510d
             'Slim\\Views\\' => 11,
             'Slim\\' => 5,
         ),
+        'R' => 
+        array (
+            'Respect\\Validation\\' => 19,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'PhpOffice\\PhpWord\\' => 18,
+            'PhpOffice\\Common\\' => 17,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
@@ -59,6 +70,14 @@ class ComposerStaticInitf61bbd33f01323cc973c919891b0510d
     );
 
     public static $prefixDirsPsr4 = array (
+        'Zend\\Stdlib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-stdlib/src',
+        ),
+        'Zend\\Escaper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-escaper/src',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -80,6 +99,10 @@ class ComposerStaticInitf61bbd33f01323cc973c919891b0510d
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
         ),
+        'Respect\\Validation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/respect/validation/library',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -91,6 +114,14 @@ class ComposerStaticInitf61bbd33f01323cc973c919891b0510d
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'PhpOffice\\PhpWord\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
+        ),
+        'PhpOffice\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/common/src/Common',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
@@ -164,6 +195,7 @@ class ComposerStaticInitf61bbd33f01323cc973c919891b0510d
         'IdiormString' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
         'IdiormStringException' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
         'ORM' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
+        'PclZip' => __DIR__ . '/..' . '/pclzip/pclzip/pclzip.lib.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

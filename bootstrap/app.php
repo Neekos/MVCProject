@@ -1,13 +1,17 @@
 <?php 
 
+use Respect\Validation\Validator as v;
+
 session_start();
+
+	
 
 $app = new \Slim\App([
 	'settings' =>[
 		'displayErrorDetails' => true,
 	],
 
-	'db' => [
+	'database' => [
 		'driver' => 'mysql',
 		'host' => 'localhost',
 		'database' => 'test',
@@ -39,13 +43,13 @@ return $view;
 
 	
 
-	//$capsule = new \Illuminate\Database\Capsule\Manager;
+	$capsule = new \Illuminate\Database\Capsule\Manager;
 
-	//$capsule->addConnection($container['db']);
+	$capsule->addConnection($container['database']);
 
-	//$capsule->setAsGlobal();
+	$capsule->setAsGlobal();
 
-	//$capsule->bootEloquent();
+	$capsule->bootEloquent();
 	
 
 
@@ -56,10 +60,25 @@ return $view;
 			return new PDO('mysql:host=localhost;port=3306;dbname=test', 'root', '');
 		};
 
+		$container['database'] = function($container) use ($capsule){
+			return $capsule;
+		};
+
 		$container['validator'] = function($container){
 			return new App\validation\Validator;
 			
 		};
+
+		$container['auth'] = function($container){
+			return new App\auth\auth;
+			
+		};
+
+		$app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
+
+		$app->add(new \App\Middleware\OldValidationMiddleware($container));
+
+		v::with('App\\Validation\\Rules\\');
 
 		//создаем контайнер отображения шаблонов
 		$container['view'] = function ($container) {

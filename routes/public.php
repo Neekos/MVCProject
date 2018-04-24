@@ -67,6 +67,7 @@
 	$app->group('/home', function(){
 			//Отображение элементов главной страницы
 			$this->get('/', HomeController::class .':index')->setName('home');
+			
 	});
 
 	//Новости

@@ -21,6 +21,10 @@
 				}
 				
 			}
+
+			
+
+			$_SESSION['errors'] = $this->errors;
 			return $this;
 		}
 

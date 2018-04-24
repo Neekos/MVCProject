@@ -23,7 +23,7 @@
 				'name' => v::noWhitespace()->notEmpty(),
 				'surname' => v::noWhitespace()->notEmpty(),
 				'middlename' => v::noWhitespace()->notEmpty(),
-				'email' => v::noWhitespace()->notEmpty(),
+				'email' => v::noWhitespace()->notEmpty()->email()->EmailAvailable(),
 				'telephon' => v::noWhitespace()->notEmpty(),
 				'password' => v::noWhitespace()->notEmpty(),
 			]);
@@ -32,7 +32,7 @@
 				return $response->withRedirect($this->c->router->pathFor('signup'));
 			}
 
-
+		
 			$user = $this->c->db->prepare("INSERT INTO user (name , surname , middlename , email , telephon , password) VALUES (:name , :surname , :middlename , :email , :telephon , :password)");
 
 				$params = $request->getParams();
@@ -45,9 +45,17 @@
 					':telephon' =>$params['telephon'],
 					':password' =>md5($params['password'])
 					]);
-
+					/*
+					Model_User::create([
+							'name' => $request->getParam('name'),
+							'surname' => $request->getParam('surname'),
+							'middlename' => $request->getParam('middlename'),
+							'email' => $request->getParam('email'),
+							'telephon' => $request->getParam('telephon'),
+							'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
+						]);
+						*/
 					return $response->withRedirect($this->c->router->pathFor('confirm'));
-
 		}
 
 		function getSignupConfirm($request, $response){
